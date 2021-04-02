@@ -1,5 +1,7 @@
 package cz.educanet;
 
+import java.util.ArrayList;
+
 public class MathUtils {
 
     /**
@@ -12,8 +14,27 @@ public class MathUtils {
      * @param b second number
      * @return GCD
      */
+
     public static int findGreatestCommonDenominator(int a, int b) {
-        throw new UnsupportedOperationException();
+        ArrayList<Integer> list = new ArrayList<>();
+        int gcd = 0;
+
+        float toA = (float) a;
+        float toB = (float) b;
+
+        for (int i = 0; i <= a; i++) {
+            if (toA / i == Math.floor(toA/i)) {
+                list.add(i);
+            }
+        }
+
+        for (int i = b; i <= b; i--) {
+            if ((toB / i == Math.floor(toB/i)) && list.contains(i)) {
+                gcd = i;
+                return gcd;
+            }
+        }
+        return 0;
     }
 
     /**
@@ -26,8 +47,28 @@ public class MathUtils {
      * @param b second number
      * @return GCD
      */
+
     public static int findLowestCommonMultiple(int a, int b) {
-        throw new UnsupportedOperationException();
+        ArrayList<Integer> list = new ArrayList<>();
+        int prvniCislo = 0;
+        int druhyCislo = 0;
+
+        int nejnizsiSpolecnyNasobek = 0;
+
+        for (int i = 1; i <= b; i++) {
+            prvniCislo = a * i;
+            list.add(prvniCislo);
+        }
+
+        for (int j = 1; j < a; j++) {
+            druhyCislo = b * j;
+            if (list.contains(druhyCislo)) {
+                nejnizsiSpolecnyNasobek = druhyCislo;
+
+                return nejnizsiSpolecnyNasobek;
+            }
+        }
+        return 0;
     }
 
 }

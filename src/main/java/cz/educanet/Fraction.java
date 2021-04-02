@@ -11,66 +11,81 @@ public class Fraction {
     }
 
     //region: basic operations (+, -, *, /)
-    /**
-     * Adds the fraction to the other fraction. Returns a new fraction.
-     * @param other
-     * @return new fraction
-     */
+    //Scitani
     public Fraction plus(Fraction other) {
-        throw new UnsupportedOperationException();
+        int anoMatikaJeFaktSuperPredmetMilujuToJJ = MathUtils.findLowestCommonMultiple(denominator, other.denominator);
+
+        int a = anoMatikaJeFaktSuperPredmetMilujuToJJ / denominator;
+        int b = anoMatikaJeFaktSuperPredmetMilujuToJJ / other.denominator;
+        int c = numerator * a;
+        int d = other.numerator * b;
+
+        int vysledek = c + d;
+
+        return new Fraction(vysledek, anoMatikaJeFaktSuperPredmetMilujuToJJ);
     }
 
-    /**
-     * Subtracts other from the fraction. Returns a new fraction.
-     * @param other
-     * @return new fraction
-     */
+    //Odecitani
     public Fraction minus(Fraction other) {
-        throw new UnsupportedOperationException();
+        int anoMatikaJeFaktSuperPredmetMilujuToJJ = MathUtils.findLowestCommonMultiple(denominator, other.denominator);
+
+        int a = anoMatikaJeFaktSuperPredmetMilujuToJJ / denominator;
+        int b = anoMatikaJeFaktSuperPredmetMilujuToJJ / other.denominator;
+        int c = numerator * a;
+        int d = other.numerator * b;
+
+        int vysledek = c - d;
+
+        return new Fraction(vysledek, anoMatikaJeFaktSuperPredmetMilujuToJJ);
     }
 
-    /**
-     * Multiplies the two fractions. Returns a new fraction.
-     * @param other
-     * @return new fraction
-     */
+    //Nasobeni
     public Fraction times(Fraction other) {
-        throw new UnsupportedOperationException();
+
+        int nasobeniXD = numerator * other.numerator;
+        int nasobenickoXD = denominator * other.denominator;
+
+        return new Fraction(nasobeniXD, nasobenickoXD);
     }
 
-    /**
-     * Divides the two fractions (this / other). Returns a new fraction.
-     * @param other
-     * @return new fraction
-     */
+    //Deleni
     public Fraction dividedBy(Fraction other) {
-        throw new UnsupportedOperationException();
+
+        int deleniXD = numerator * other.denominator;
+        int delenickoXD = denominator * other.numerator;
+
+        return new Fraction(deleniXD, delenickoXD);
     }
     //endregion
 
     //region: other operations
-    /**
-     * Gets the reciprocal (flipped) of the fraction. ie. reciprocal of 1/2 is 2/1
-     * @return new fraction
-     */
+    //Prehozeni
     public Fraction getReciprocal() {
-        throw new UnsupportedOperationException();
+        return new Fraction (getDenominator(),getNumerator());
     }
-
-    /**
-     * Simplifies the fraction
-     * @return new fraction
-     */
+    //Zjednoduseni
     public Fraction simplify() {
-        throw new UnsupportedOperationException();
+        int anoMatikaJeFaktSuperPredmetMilujuToJJ = MathUtils.findGreatestCommonDenominator(numerator, denominator);
+
+        int ano = numerator / anoMatikaJeFaktSuperPredmetMilujuToJJ;
+        int bne = denominator / anoMatikaJeFaktSuperPredmetMilujuToJJ;
+
+        return new Fraction(ano,bne);
     }
 
-    /**
-     * Calculates the floating value of the fraction.
-     * @return float
-     */
+    //Plovouci cislo
     public float toFloat() {
-        throw new UnsupportedOperationException();
+        int cislo = 0;
+        float desetineCislo = cislo;
+
+        if (denominator != 0) {
+            desetineCislo = (float)numerator / (float)denominator;
+        }
+        else {
+            System.out.println("Nejde dělit nulou (nečekaně)");
+        }
+
+        return desetineCislo;
     }
     //endregion
 
@@ -78,7 +93,6 @@ public class Fraction {
     public int getNumerator() {
         return numerator;
     }
-
     public int getDenominator() {
         return denominator;
     }
